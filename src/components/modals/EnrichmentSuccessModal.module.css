@@ -33,7 +33,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  background: linear-gradient(to right, #f8fafc, #ffffff);
+  background: var(--bg-primary); /* Removed hardcoded gradient */
 }
 
 .titleWithIcon {
@@ -171,7 +171,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-2);
-  background: white;
+  background: var(--bg-primary);
   border: 1px solid var(--border-medium);
   padding: 4px 10px;
   border-radius: var(--radius-md);
@@ -188,7 +188,7 @@
 }
 
 .emailPreview {
-  background: white;
+  background: var(--bg-primary);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-lg);
   padding: var(--space-5);
@@ -222,7 +222,7 @@
 }
 
 .secondaryBtn {
-  background: white;
+  background: var(--bg-primary);
   border: 1px solid var(--border-medium);
   padding: 8px 16px;
   border-radius: var(--radius-md);
