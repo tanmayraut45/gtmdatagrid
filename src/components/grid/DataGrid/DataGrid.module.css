@@ -1,0 +1,58 @@
+.gridContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+  background-color: var(--bg-primary);
+}
+
+/* Header wrapper - hidden horizontal scrollbar, synced with body */
+.headerWrapper {
+  flex-shrink: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.gridBody {
+  flex: 1;
+  overflow: auto;
+  position: relative;
+}
+
+.virtualContainer {
+  position: relative;
+}
+
+/* Scrollbar styling for grid */
+.gridBody::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.gridBody::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+}
+
+.gridBody::-webkit-scrollbar-thumb {
+  background: var(--color-gray-300);
+  border-radius: 5px;
+  border: 2px solid var(--bg-tertiary);
+}
+
+.gridBody::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gray-400);
+}
+
+.gridBody::-webkit-scrollbar-corner {
+  background: var(--bg-tertiary);
+}
+
+.emptyState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+}
+

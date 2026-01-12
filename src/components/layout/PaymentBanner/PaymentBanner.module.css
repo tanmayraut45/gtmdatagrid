@@ -1,0 +1,44 @@
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  height: var(--banner-height);
+  padding: 0 var(--space-4);
+  background-color: #dc2626;
+  color: var(--text-inverse);
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.message {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+}
+
+.icon {
+  opacity: 0.9;
+  flex-shrink: 0;
+}
+
+.payButton {
+  padding: var(--space-1) var(--space-4);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.payButton:hover {
+  background-color: var(--bg-secondary);
+  transform: translateY(-1px);
+}
