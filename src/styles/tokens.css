@@ -144,3 +144,32 @@
   --toolbar-height: 48px;
   --bottom-tabs-height: 40px;
 }
+
+[data-theme="dark"] {
+  /* Dark Mode Overrides */
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  --bg-hover: #1e293b;
+  --bg-active: #334155;
+
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-tertiary: #94a3b8;
+  --text-muted: #64748b;
+  --text-inverse: #0f172a;
+
+  --border-light: #334155;
+  --border-medium: #475569;
+  --border-dark: #64748b;
+
+  --color-gray-50: #1e293b;
+  --color-gray-100: #334155;
+
+  /* Primary Overrides */
+  --color-primary-light: #2e1065; /* Violet-950 for selected rows */
+  
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+}

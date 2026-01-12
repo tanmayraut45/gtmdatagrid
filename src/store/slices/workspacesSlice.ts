@@ -59,6 +59,15 @@ const workspacesSlice = createSlice({
         ...tab,
         isActive: tab.id === action.payload,
       }));
+
+      // Update breadcrumbs to reflect active tab
+      const activeTab = state.tabs.find((tab) => tab.id === action.payload);
+      if (activeTab && state.breadcrumbs.length > 0) {
+        // Assume the last breadcrumb is the active sheet/tab
+        state.breadcrumbs[state.breadcrumbs.length - 1] = {
+          label: activeTab.name,
+        };
+      }
     },
     addTab: (state, action: PayloadAction<GridTab>) => {
       state.tabs.push(action.payload);

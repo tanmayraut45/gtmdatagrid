@@ -5,6 +5,7 @@ import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";
 import { openModal, addToast, setSortConfig } from "@/store/slices/uiSlice";
 import { deselectAllTabRows, deleteTabRows } from "@/store/slices/tabDataSlice";
 import { useJobSimulation } from "@/hooks/useJobSimulation";
+import { useAiEnrichment } from "@/hooks/useAiEnrichment";
 import {
   Upload,
   Grid3X3,
@@ -18,6 +19,7 @@ import {
   Download,
   Copy,
   Check,
+  Bot,
 } from "lucide-react";
 import { Chip } from "@/components/ui/Chip";
 import styles from "./Toolbar.module.css";
@@ -45,6 +47,7 @@ export const Toolbar: React.FC = () => {
   const [showActionMenu, setShowActionMenu] = useState(false);
   const [showEnrichmentMenu, setShowEnrichmentMenu] = useState(false);
   const [showSortMenu, setShowSortMenu] = useState(false);
+  const { enrichRows, isAiLoading } = useAiEnrichment();
 
   const handleSort = (field: string, direction: "asc" | "desc") => {
     dispatch(setSortConfig({ field, direction }));
@@ -110,6 +113,10 @@ export const Toolbar: React.FC = () => {
   const handleEnrichment = (type: string) => {
     startEnrichmentJob(totalRows);
     setShowEnrichmentMenu(false);
+  };
+
+  const handleAIEnrichment = async () => {
+    await enrichRows(selectedIds);
   };
 
   return (

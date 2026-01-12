@@ -184,6 +184,14 @@ const tabDataSlice = createSlice({
         });
       }
     },
+    updateTabRowEnrichment: (state, action: PayloadAction<{ tabId: string; rowId: string; generatedEmail: string }>) => {
+      const { tabId, rowId, generatedEmail } = action.payload;
+      if (state.data[tabId] && state.data[tabId].byId[rowId]) {
+        state.data[tabId].byId[rowId].enrichmentData = {
+          generatedEmail,
+        };
+      }
+    },
   },
 });
 
@@ -194,6 +202,7 @@ export const {
   selectAllTabRows,
   deselectAllTabRows,
   deleteTabRows,
+  updateTabRowEnrichment,
 } = tabDataSlice.actions;
 
 export default tabDataSlice.reducer;

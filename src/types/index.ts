@@ -12,6 +12,9 @@ export interface Row {
   companyWebsite: string;
   linkedinJobUrl: string;
   emailWaterfall: EmailWaterfallStatus;
+  enrichmentData?: {
+    generatedEmail?: string;
+  };
   // Additional fields can be added as needed
   [key: string]: unknown;
 }
@@ -153,6 +156,7 @@ export interface ModalState {
   rowDetail: boolean;
   export: boolean;
   enrichment: boolean;
+  enrichmentSuccess: boolean;
 }
 
 export interface Toast {

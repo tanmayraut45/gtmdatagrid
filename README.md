@@ -29,18 +29,19 @@
 
 ### Core Grid Capabilities
 
-| Feature                        | Description                                                          |
-| ------------------------------ | -------------------------------------------------------------------- |
+| Feature                  | Description                                                          |
+| ------------------------ | -------------------------------------------------------------------- |
 | **Virtual Scrolling**    | Render 10,000+ rows at 60fps with TanStack Virtual                   |
 | **Multi-Tab Workspaces** | Switch between datasets with independent state per tab               |
 | **Column Resizing**      | Drag-to-resize columns with persistent widths                        |
 | **Bulk Selection**       | Select individual rows, ranges, or all with keyboard shortcuts       |
 | **Real-time Enrichment** | Simulate email/phone/LinkedIn data enrichment with progress tracking |
+| **AI Automation**        | **[NEW]** Generate personalized sales emails using Groq LLM API      |
 
 ### UI/UX
 
-| Feature                        | Description                                                                |
-| ------------------------------ | -------------------------------------------------------------------------- |
+| Feature                  | Description                                                                |
+| ------------------------ | -------------------------------------------------------------------------- |
 | **Sticky Header**        | Column headers remain visible while scrolling                              |
 | **Status Badges**        | Visual indicators for email status (Found/Not Met)                         |
 | **Company Logos**        | Dynamic logo rendering for Google, Amazon, Microsoft, Apple, LinkedIn, TED |
@@ -49,13 +50,15 @@
 
 ### Data Management
 
-| Feature                    | Description                                  |
-| -------------------------- | -------------------------------------------- |
-| **Load Data Modal**  | Import from CSV, API, or Database sources    |
-| **Column Picker**    | Toggle visibility of 12+ data columns        |
-| **Filter Panel**     | Build complex filter rules with AND/OR logic |
-| **Export to CSV**    | Download selected or all rows                |
-| **Duplicate/Delete** | Bulk operations on selected rows             |
+| Feature                | Description                                                                                                          |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| **Load Data Modal**    | Import from CSV, API, or Database sources                                                                            |
+| **Column Picker**      | Toggle visibility of 12+ data columns                                                                                |
+| **Filter Panel**       | Build complex filter rules with AND/OR logic                                                                         |
+| **Export to CSV**      | Download selected or all rows                                                                                        |
+| **Duplicate/Delete**   | Bulk operations on selected rows                                                                                     |
+| **Keyboard Shortcuts** | **[NEW]** Power user controls: `Cmd/Ctrl + K` (Command Palette), `Cmd/Ctrl + A` (Select All), `Delete` (Remove Rows) |
+| **Dark Mode**          | **[NEW]** System-aware dark theme with persistent toggle                                                             |
 
 ---
 
@@ -65,13 +68,14 @@
 
 - **Scroll** through 1,000+ virtualized rows
 - **Click tabs** at bottom to switch datasets (each tab has unique data)
+- **Breadcrumbs** automatically update to show your current location
 - **Resize columns** by dragging header borders
 
-### Enrichment Workflow
+### AI Enrichment Workflow
 
-1. Click **Enrichment** → Select enrichment type
-2. Watch **progress indicator** update in real-time
-3. Use **Kill Run** to cancel ongoing jobs
+1. **Contextual Trigger**: Hover over any row and click the **AI Enrich** button to generate a personalized email for that specific contact.
+2. **Instant Feedback**: View the generated content in a rich modal with reasoning, source context, and copy actions.
+3. **Bulk Automation**: (Coming Soon) Select multiple rows to process in background batches.
 
 ### Actions
 
@@ -152,16 +156,19 @@ src/
 
 ## 🛠️ Tech Stack
 
-| Category                 | Technology        | Purpose                         |
-| ------------------------ | ----------------- | ------------------------------- |
-| **Framework**      | Next.js 16        | React framework with App Router |
-| **Language**       | TypeScript 5      | Type-safe development           |
-| **State**          | Redux Toolkit     | Predictable state management    |
-| **Tables**         | TanStack Table v8 | Headless table logic            |
-| **Virtualization** | TanStack Virtual  | Efficient large list rendering  |
-| **UI Primitives**  | Radix UI          | Accessible component primitives |
-| **Icons**          | Lucide React      | Modern icon library             |
-| **Styling**        | CSS Modules       | Scoped component styles         |
+| Category           | Technology           | Purpose                               |
+| ------------------ | -------------------- | ------------------------------------- |
+| Category           | Technology           | Purpose                               |
+| ------------------ | -------------------- | ------------------------------------- |
+| **Framework**      | Next.js 16           | React framework with App Router       |
+| **Language**       | TypeScript 5         | Type-safe development                 |
+| **State**          | Redux Toolkit        | Predictable state management          |
+| **Tables**         | TanStack Table v8    | Headless table logic                  |
+| **Virtualization** | TanStack Virtual     | Efficient large list rendering        |
+| **UI Primitives**  | Radix UI             | Accessible component primitives       |
+| **Icons**          | Lucide React         | Modern icon library                   |
+| **AI/LLM**         | Groq SDK (Llama 3.3) | Ultra-fast inference for automation   |
+| **Styling**        | CSS Modules          | Scoped component styles               |
 
 ---
 
@@ -195,8 +202,8 @@ src/
 
 ## 📁 Key Files
 
-| File                                          | Description                              |
-| --------------------------------------------- | ---------------------------------------- |
+| File                                        | Description                              |
+| ------------------------------------------- | ---------------------------------------- |
 | `src/app/page.tsx`                          | Main application with modals integration |
 | `src/components/grid/DataGrid/DataGrid.tsx` | Virtualized grid with TanStack           |
 | `src/store/slices/tabDataSlice.ts`          | Per-tab data management                  |
@@ -224,7 +231,6 @@ Edit `src/styles/tokens.css` to customize:
 3. Update `Row` type in `types/index.ts`
 
 ---
-
 
 <p align="center">
   Built with Next.js, Redux, and TanStack

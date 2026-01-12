@@ -13,6 +13,7 @@ import {
   selectAllTabRows,
   deselectAllTabRows,
 } from "@/store/slices/tabDataSlice";
+import { useAiEnrichment } from "@/hooks/useAiEnrichment";
 import { Row } from "@/types";
 import { GridRow } from "../GridRow";
 import { GridHeader } from "../GridHeader";
@@ -112,6 +113,15 @@ export const DataGrid: React.FC = () => {
     [dispatch, activeTabId]
   );
 
+  // AI Enrichment
+  const { enrichRows, isAiLoading } = useAiEnrichment();
+  const handleEnrichRow = useCallback(
+    (rowId: string) => {
+      enrichRows([rowId]);
+    },
+    [enrichRows]
+  );
+
   // Calculate total width of all columns
   const totalWidth = useMemo(() => {
     return visibleColumns.reduce((acc, col) => acc + (col.width || 150), 0);
@@ -161,6 +171,7 @@ export const DataGrid: React.FC = () => {
                 columns={visibleColumns}
                 isSelected={isSelected}
                 onSelect={handleRowSelect}
+                onEnrich={handleEnrichRow}
                 style={{
                   position: "absolute",
                   top: 0,

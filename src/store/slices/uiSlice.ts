@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ModalState, Toast, FilterRule, SortConfig } from '@/types';
 
+// ===== UI STATE =====
+
 interface UIState {
   modals: ModalState;
   toasts: Toast[];
@@ -12,6 +14,11 @@ interface UIState {
   sidebarOpen: boolean;
   rowDetailId: string | null;
   isGridLoading: boolean;
+  aiResult: {
+    company: string;
+    person: string;
+    email: string;
+  } | null;
 }
 
 const initialState: UIState = {
@@ -22,27 +29,29 @@ const initialState: UIState = {
     rowDetail: false,
     export: false,
     enrichment: false,
+    enrichmentSuccess: false,
   },
   toasts: [],
   filters: [
     {
-      id: 'filter-1',
-      field: 'companyName',
-      operator: 'contains',
-      value: '',
+      id: "filter-1",
+      field: "companyName",
+      operator: "contains",
+      value: "",
     },
   ],
   activeFiltersCount: 1,
   sort: null,
   sortConfig: null,
-  searchQuery: '',
+  searchQuery: "",
   sidebarOpen: false,
   rowDetailId: null,
   isGridLoading: false,
+  aiResult: null,
 };
 
 const uiSlice = createSlice({
-  name: 'ui',
+  name: "ui",
   initialState,
   reducers: {
     openModal: (state, action: PayloadAction<keyof ModalState>) => {
@@ -109,6 +118,9 @@ const uiSlice = createSlice({
     setSortConfig: (state, action: PayloadAction<SortConfig | null>) => {
       state.sortConfig = action.payload;
     },
+    setAiResult: (state, action: PayloadAction<{ company: string; person: string; email: string } | null>) => {
+      state.aiResult = action.payload;
+    },
   },
 });
 
@@ -131,6 +143,7 @@ export const {
   setSidebarOpen,
   setRowDetailId,
   setGridLoading,
+  setAiResult,
 } = uiSlice.actions;
 
 export default uiSlice.reducer;

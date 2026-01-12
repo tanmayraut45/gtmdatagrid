@@ -4,7 +4,7 @@ import React, { memo } from "react";
 import { Row, ColumnDef } from "@/types";
 import { GridCell } from "../GridCell";
 import * as Checkbox from "@radix-ui/react-checkbox";
-import { Check, ChevronRight } from "lucide-react";
+import { Check, ChevronRight, Sparkles } from "lucide-react";
 import styles from "./GridRow.module.css";
 
 interface GridRowProps {
@@ -13,11 +13,12 @@ interface GridRowProps {
   columns: ColumnDef[];
   isSelected: boolean;
   onSelect: (rowId: string) => void;
+  onEnrich: (rowId: string) => void;
   style?: React.CSSProperties;
 }
 
 export const GridRow: React.FC<GridRowProps> = memo(
-  ({ row, rowIndex, columns, isSelected, onSelect, style }) => {
+  ({ row, rowIndex, columns, isSelected, onSelect, onEnrich, style }) => {
     return (
       <div
         className={`${styles.row} ${isSelected ? styles.selected : ""} ${
@@ -52,6 +53,20 @@ export const GridRow: React.FC<GridRowProps> = memo(
 
           return <GridCell key={column.id} column={column} row={row} />;
         })}
+
+        {/* Hover AI Trigger */}
+        <div className={styles.enrichAction}>
+          <button
+            className={styles.enrichButton}
+            onClick={(e) => {
+              e.stopPropagation();
+              onEnrich(row.id);
+            }}
+          >
+            <Sparkles size={12} />
+            <span>AI Enrich</span>
+          </button>
+        </div>
       </div>
     );
   }

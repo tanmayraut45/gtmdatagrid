@@ -13,6 +13,8 @@ import {
   ColumnPickerModal,
   FilterPanel,
 } from "@/components/modals";
+import { EnrichmentSuccessModal } from "@/components/modals/EnrichmentSuccessModal";
+import { useKeyboardShortcuts } from "@/hooks/useKeyboardShortcuts";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -39,6 +41,7 @@ export default function Home() {
       <LoadDataModal />
       <ColumnPickerModal />
       <FilterPanel />
+      <EnrichmentSuccessModal />
 
       {/* Toast notifications */}
       <ToastContainer />
